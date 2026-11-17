@@ -1,7 +1,6 @@
 # tiny-chess-01
 
-A compact chess engine in Python (standard library only), packed as an
-lzma + base85 payload in `main.py` (4,024 bytes, limit 4,096).
+A compact chess engine in Python (standard library only), packed with the kit's `makefun compress` in `main.py` (3,975 bytes, limit 4,096).
 
 ## Engine
 
@@ -10,6 +9,7 @@ lzma + base85 payload in `main.py` (4,024 bytes, limit 4,096).
 - Quiescence search (captures, promotions, and all evasions when in check).
 - Transposition table, killer moves, MVV move ordering, PVS at the root.
 - Null-move pruning (guarded by non-pawn material).
+- 12-line opening book (keyed by opening, colour and opponent), played from the book before the search takes over.
 - Evaluation: material + piece-square tables (tapered king midgame/endgame),
   bishop-pair bonus, passed-pawn bonus, rook open/semi-open file bonus, and
   king shield bonus. Draw handling for repetition
@@ -25,4 +25,4 @@ Speaks the make.fun env HTTP protocol (`MAKEFUN_ENV_URL`): `POST /game`,
 - `main.py` — the entry (packed).
 - `LICENSE` — MIT.
 
-The readable development source lives outside this repo (dev/mini9.py).
+The readable development source lives outside this repo (dev/mini18-final.py). Local gauntlet trials of the kit pack: Elo 1,669 / 1,326 / 1,530 across three trials, mean 1,508 (mini9's mean was 1,440).
